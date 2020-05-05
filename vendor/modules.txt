@@ -1,0 +1,2 @@
+# github.com/aws/aws-sdk-go v1.30.20
+github.com/aws/aws-sdk-go/service/cloudfront/sign
