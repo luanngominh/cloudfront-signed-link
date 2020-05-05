@@ -4,17 +4,18 @@ import (
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/pem"
-	"github.com/aws/aws-sdk-go/service/cloudfront/sign"
 	"io/ioutil"
 	"log"
 	"strings"
 	"time"
+
+	"github.com/aws/aws-sdk-go/service/cloudfront/sign"
 )
 
 var (
 	privateKeyFile = "pk-APKAIOKHNLXZIO3FRZ3Q.pem"
+	ACCESS_KEY     = "PPKOIOKHKLXZLQ3FRZ3A"
 
-	ACCESS_KEY  = "APKAIOKHNLXZIO3FRZ3Q"
 	PRIVATE_KEY *rsa.PrivateKey
 
 	cdnDomain = "d2sjg3xny2v4pz.cloudfront.net"

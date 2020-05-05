@@ -1,0 +1,21 @@
+* Create Cloudfront Signed URL
+- Create distribution by follow artical: https://medium.com/roam-and-wander/using-cloudfront-signed-urls-to-serve-private-s3-content-e7c63ee271db
+- Change some AWS config:
+  * privateKeyFile: your cloudfront private key
+  * ACCESS_KEY: your cloudfront access key
+  * cdnDomain: your cdn domain
+  * s3Domain: your S3 bucket domain
+  * s3URL: an object your S3 bucket
+ 
+- Build and run:
+  * `make build`: build program
+  * `make dev`: run program
+ 
+- Result
+  * S3 private object: https://shub-storage-siujq.s3.ap-southeast-1.amazonaws.com/tests/559350/file_url/Bang_Con_Vow.pdf
+  * Cloudfront URL: https://d2sjg3xny2v4pz.cloudfront.net/tests/559350/file_url/Bang_Con_Vow.pdf?Expires=1588873170&Signature=KbkbtTR3a1eZG3DlbMYBEbh~Gd2puaGMe75eFrdD9bu47HYHnYTHdFkvwvn7KGLFJysadVj~~TR55UgU5RAAlMGendJfug75tF~SIBhkcNLZr2CEZkYtZVtZay66VAIbJlo3aGYEVJpyzy3lvHqqQUbaKFK8V1iwS7Dl7iSnlx7DIB0B4UUcELVenZwg9eGvp6BoSke5NVAUy-2xxmHOuAm80Fs7KbjF2rM9pdoWZIQ1tWDApOXoS01SFpSH8KCOPGqk6TFy5Clw4mL3UJDXXYE3TpdjKexEE868Uss0~BrGhZI1~ZDKjHnYlDwduEDVxbHZmLJLc4TUa1jRm2Ehdw__&Key-Pair-Id=PPKOIOKHKLXZLQ3FRZ3A
+  * Check object were served from cloudfront by 
+```shell
+curl -vI <cloud_fron_url>
+```
+ and find x-cache header. x-cache header value is `HIT`, It mean object were served from cloudfront and othetwise. 
